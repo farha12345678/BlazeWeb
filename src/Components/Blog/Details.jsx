@@ -1,12 +1,14 @@
 
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Comments from "./Comments";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext } from "react";
 
 
 
 const Details = () => {
     const blogLoad = useLoaderData()
-    // const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // const [comments, setComments] = useState([])
 
     // console.log(blogLoad);
@@ -41,7 +43,21 @@ const Details = () => {
                     <p className='text-lg font-medium text-blue-500'>{blogLoad.short_description}</p>
                     <p className='text-lg font-medium '>{blogLoad.long_description}</p>
                     <p className='text-lg font-medium'>Category: <span>{blogLoad.category}</span></p>
-                   
+                   <div>
+                    {
+                        user?.email === blogLoad.email? (
+                            <>
+                            <Link to={`/update/${blogLoad._id}`}><button>Update</button></Link>
+                            <p>User Cannot comment on his own blog</p>
+                            </>
+                        ) 
+                        
+                        
+                        : (
+                            <p>Comment now</p>
+                        )
+                    }
+                   </div>
                 </div>
             </div>
             <Comments></Comments>
