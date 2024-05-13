@@ -1,12 +1,34 @@
-import { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
+
+import { useLoaderData } from "react-router-dom";
+import Comments from "./Comments";
+
+
 
 const Details = () => {
     const blogLoad = useLoaderData()
-    const {user} = useContext(AuthContext)
+    // const { user } = useContext(AuthContext)
+    // const [comments, setComments] = useState([])
 
-    console.log(blogLoad);
+    // console.log(blogLoad);
+
+    // const handleComment = e => {
+    //     e.preventDefault()
+    //     const form = e.target
+    //     const comment = form.comment.value
+    //     const image = user?.photoURL
+    //     const name = user?.displayName
+    //     const addComment = { comment, image, name }
+    //     console.log(addComment);
+    //     axios.post('http://localhost:5000/comment', addComment)
+    //         .then(data => {
+    //             if (data.data.insertedId) {
+    //                 setComments(data)
+    //             }
+    //         })
+
+    // }
+
+
     return (
         <div>
             <div className=" w-[900px] mx-auto h-auto bg-purple-100 border border-purple-600 my-20">
@@ -19,15 +41,21 @@ const Details = () => {
                     <p className='text-lg font-medium text-blue-500'>{blogLoad.short_description}</p>
                     <p className='text-lg font-medium '>{blogLoad.long_description}</p>
                     <p className='text-lg font-medium'>Category: <span>{blogLoad.category}</span></p>
-                   <div>
-                    {
-                        user?
-                        <Link to={`/update/${blogLoad._id}`}>Update</Link> : <div></div>
-                        
-                    }
-                   </div>
+                   
                 </div>
             </div>
+            <Comments></Comments>
+            {/* <div>
+                       <div className="h-[400px]">
+                        {
+                            comments?.map(c => <p key={comments._id}>{c.comment}</p>)
+                        }
+                       </div>
+                        <form onSubmit={handleComment}>
+                            <input type="text" name="comment" />
+                            <button>Comment</button>
+                        </form>
+                    </div> */}
         </div>
     );
 };

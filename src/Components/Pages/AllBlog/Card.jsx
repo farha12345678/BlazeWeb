@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import axios from 'axios';
 
 const Card = ({blog}) => {
     const {_id ,title , image , short_description , category} = blog
@@ -14,24 +15,33 @@ const Card = ({blog}) => {
         const wishId = _id;
         const email = user?.email
        const wishedBlog = {wishId,title,image,short_description,email,category}
-        fetch('http://localhost:5000/wish', 
-            {
-                method:'POST',
-               headers: {
-                'content-type' : 'application/json'
-               },
-              body: JSON.stringify(wishedBlog)
-            }
-        )
-        .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    Swal.fire("Blog Added Successfully!");
-                    
-                }
 
-            })
+       axios.post('http://localhost:5000/blog' , wishedBlog)
+         .then(data => {
+            if(data.data.insertedId){
+                Swal.fire("Blog Added Successfully!");
+                    e.target.reset();
+            }
+                
+         })
+        // fetch('http://localhost:5000/wish', 
+        //     {
+        //         method:'POST',
+        //        headers: {
+        //         'content-type' : 'application/json'
+        //        },
+        //       body: JSON.stringify(wishedBlog)
+        //     }
+        // )
+        // .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.insertedId) {
+        //             Swal.fire("Blog Added Successfully!");
+                    
+        //         }
+
+        //     })
     }
     return (
         <div>

@@ -3,33 +3,52 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 
 import Card from "./Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 const AllBlogs = () => {
     const blogs = useLoaderData()
-    console.log(blogs);
-    const [search, setSearch] = useState("")
+    // console.log(blogs);
+    const [search, setSearch] = useState('')
 
-    const handleSearch = () => {
-        
-       fetch('/searchBlogs', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ search })
-            });
+    useEffect(() => {
+        fetch(`/blog?&search=${search}`)
+            .then(res => {
+                console.log(res);
+                
+            })
 
-            // if (!response.ok) {
-            //     throw new Error('Failed to fetch data');
-            // }
 
-            
-            
-        } 
-    
 
+        // const getData = async() => {
+        //     const {data} = await axios(
+        //         `/blog/&search=${search}`
+        //     ) 
+        // }
+        //  getData()
+        // fetch(`/blog/&search=${search}`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ search })
+        // });
+
+
+
+
+
+    }, [search])
+
+    const handleSearch = e => {
+        e.preventDefault()
+        const title = e.target.search.value
+        setSearch(title)
+        console.log(title);
+
+
+    }
 
 
     return (
@@ -37,12 +56,12 @@ const AllBlogs = () => {
 
         < div >
 
-        <div>
-            <form>
-                <input className="border border-blue-500 " type="text" onChange={(e) => setSearch(e.target.value)} value={search}/>
-                <button onClick={handleSearch}>Search</button>
-            </form>
-        </div>
+            <div>
+                <form onSubmit={handleSearch}>
+                    <input type="title" name="search" />
+                    <input type="submit" />
+                </form>
+            </div>
             <Tabs>
                 <div className="container mx-auto my-10 ">
                     <div className="flex justify-center items-center">
