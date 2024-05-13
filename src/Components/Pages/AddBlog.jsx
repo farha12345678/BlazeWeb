@@ -27,22 +27,7 @@ const AddBlog = () => {
             }
                 
          })
-        //  fetch('http://localhost:5000/blog', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(addBlog)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.insertedId) {
-        //             Swal.fire("Blog Added Successfully!");
-        //             e.target.reset()
-        //         }
-
-        //     })
+       
     }
     return (
         <div>

@@ -1,45 +1,61 @@
-import { useLoaderData } from "react-router-dom";
+
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 
 import Card from "./Card";
-import { useEffect, useState } from "react";
+
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import axios from "axios";
 
 
 const AllBlogs = () => {
-    const blogs = useLoaderData()
-    // console.log(blogs);
+    // const blogs = useLoaderData()
+    // // console.log(blogs);
     const [search, setSearch] = useState('')
 
-    useEffect(() => {
-        fetch(`/blog?&search=${search}`)
-            .then(res => {
-                console.log(res);
-                
-            })
+    // useEffect(() => {
+    //     fetch(`/blog?&search=${search}`)
+    //         .then(res => {
+    //             console.log(res);
+
+    //         })
 
 
 
-        // const getData = async() => {
-        //     const {data} = await axios(
-        //         `/blog/&search=${search}`
-        //     ) 
-        // }
-        //  getData()
-        // fetch(`/blog/&search=${search}`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ search })
-        // });
+    // const getData = async() => {
+    //     const {data} = await axios(
+    //         `/blog/&search=${search}`
+    //     ) 
+    // }
+    //  getData()
+    // fetch(`/blog/&search=${search}`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ search })
+    // });
+    // tanstack
+
+    const { isError, error, data: blogs } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/blog')
+            console.log(blogs);
+            return res.json()
+        
+        }
+    })
+
+    if(isError){
+        return <p>{error.message}</p>
+    }
 
 
 
 
-
-    }, [search])
+    // }, [search])
 
     const handleSearch = e => {
         e.preventDefault()
@@ -49,6 +65,13 @@ const AllBlogs = () => {
 
 
     }
+    
+    const getData = async() => {
+        const {} = await axios(
+            `/blog/&search=${search}`
+        ) 
+    }
+     getData()
 
 
     return (
@@ -75,21 +98,21 @@ const AllBlogs = () => {
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5">
                             {
-                                blogs.filter(b => b.category === "Productivity").map(blog => <Card key={blog._id} blog={blog}></Card>)
+                                blogs?.filter(b => b.category === "Productivity").map(blog => <Card key={blog._id} blog={blog}></Card>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                             {
-                                blogs.filter(b => b.category === "Personal Development").map(blog => <Card key={blog._id} blog={blog}></Card>)
+                                blogs?.filter(b => b.category === "Personal Development").map(blog => <Card key={blog._id} blog={blog}></Card>)
                             }
                         </div>
                     </TabPanel>
                     <TabPanel>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                             {
-                                blogs.filter(b => b.category === "Health & Wellness").map(blog => <Card key={blog._id} blog={blog}></Card>)
+                                blogs?.filter(b => b.category === "Health & Wellness").map(blog => <Card key={blog._id} blog={blog}></Card>)
                             }
                         </div>
                     </TabPanel>

@@ -1,11 +1,26 @@
+
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const Update = () => {
     const updates = useLoaderData()
-    const {_id ,title ,image ,short_description ,long_description ,category} = updates;
+    const {_id,title ,image ,short_description ,long_description ,category} = updates;
 
+    // const { isError, error, data: update } = useQuery({
+    //     queryKey: ['update'],
+    //     queryFn: async () => {
+    //         const res = await fetch((params) => `http://localhost:5000/blog/${params.id}`)
+    //         console.log(update);
+    //         return res.json()
+        
+    //     }
+    // })
+
+    // if(isError){
+    //     return <p>{error.message}</p>
+    // }
+    // const {_id ,title ,image ,short_description ,long_description ,category} = update;
 
 
     const handleUpdate = e => {
