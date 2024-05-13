@@ -6,8 +6,9 @@ import Swal from 'sweetalert2';
 const Card = ({blog}) => {
     const {_id ,title , image , short_description , category} = blog
 
-    const handleWish = e => {
+    const handleWish = e =>{
         e.preventDefault()
+        
         fetch('http://localhost:5000/wish', 
             {
                 method:'POST',
