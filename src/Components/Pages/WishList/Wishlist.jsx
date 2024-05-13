@@ -2,24 +2,25 @@
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../Providers/AuthProvider";
+import WishCard from "./WishCard";
 
 const Wishlist = () => {
     
     const { user } = useContext(AuthContext) || {}
-    const [wish , setWish] = useState([])
+    const [wishes , setWishes] = useState([])
     useEffect(() => {
         fetch(`http://localhost:5000/wish/${user?.email}`)
         .then(res=> res.json())
         .then(data=> {
-            setWish(data)
+            setWishes(data)
             console.log(data);
         })
 
-    }, [user])
+    }, [])
     return (
-        <div>
+        <div className="grid  lg:grid-cols-3 md:grid-cols-2">
            {
-            wish?.map(w => <h1>{w.title}</h1>)
+            wishes?.map(wish => <WishCard key={wish.wishId} wish={wish}></WishCard>)
            }
         </div>
     );

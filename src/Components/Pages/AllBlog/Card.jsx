@@ -1,21 +1,26 @@
 
 import { PropTypes } from 'prop-types';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Card = ({blog}) => {
     const {_id ,title , image , short_description , category} = blog
+    const {user} = useContext(AuthContext)
 
     const handleWish = e =>{
         e.preventDefault()
-        
+        const wishId = _id;
+        const email = user?.email
+       const wishedBlog = {wishId,title,image,short_description,email,category}
         fetch('http://localhost:5000/wish', 
             {
                 method:'POST',
                headers: {
                 'content-type' : 'application/json'
                },
-              body: JSON.stringify(blog)
+              body: JSON.stringify(wishedBlog)
             }
         )
         .then(res => res.json())

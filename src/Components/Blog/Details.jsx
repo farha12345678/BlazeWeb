@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Details = () => {
@@ -19,10 +19,13 @@ const Details = () => {
                     <p className='text-lg font-medium text-blue-500'>{blogLoad.short_description}</p>
                     <p className='text-lg font-medium '>{blogLoad.long_description}</p>
                     <p className='text-lg font-medium'>Category: <span>{blogLoad.category}</span></p>
-                    <div className="card-actions justify-end">
-                        <p>{user.displayName}</p>
-                    <img src={user.photoURL} alt="" />
-                    </div>
+                   <div>
+                    {
+                        user?
+                        <Link to={`/update/${blogLoad._id}`}>Update</Link> : <div></div>
+                        
+                    }
+                   </div>
                 </div>
             </div>
         </div>
