@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
 
 
 const LogIn = () => {
@@ -35,8 +36,19 @@ const LogIn = () => {
 
         signInUser(email, password)
             .then(result => {
-                if (result.user) {
+                const loggedInUser = result.user
+                console.log(loggedInUser);
+                const user = {email}
+                axios.post('http://localhost:5000/jwt', user , {withCredentials:true})
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                if (loggedInUser) {
                     navigate(form)
+                    // axios.post('http://localhost:5000/jwt', user , {withCredentials:true})
+                    // .then(res => {
+                    //     console.log(res.data);
+                    // })
                 }
 
                 e.target.reset()
