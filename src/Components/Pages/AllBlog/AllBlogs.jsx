@@ -12,6 +12,19 @@ import axios from "axios";
 const AllBlogs = () => {
     // const blogs = useLoaderData()
     // // console.log(blogs);
+    const { isError, error, data: blogs } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/blog')
+             console.log(blogs);
+            return res.json()
+        
+        }
+    })
+
+    if(isError){
+        return <p>{error.message}</p>
+    }
     const [search, setSearch] = useState('')
 
     // useEffect(() => {
@@ -38,19 +51,7 @@ const AllBlogs = () => {
     // });
     // tanstack
 
-    const { isError, error, data: blogs } = useQuery({
-        queryKey: ['blogs'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/blog')
-            console.log(blogs);
-            return res.json()
-        
-        }
-    })
-
-    if(isError){
-        return <p>{error.message}</p>
-    }
+   
 
 
 
@@ -66,12 +67,12 @@ const AllBlogs = () => {
 
     }
     
-    const getData = async() => {
-        const {} = await axios(
-            `/blog/&search=${search}`
-        ) 
-    }
-     getData()
+    // const getData = async() => {
+    //     const {} = await axios(
+    //         `/blog/&search=${search}`
+    //     ) 
+    // }
+    //  getData()
 
 
     return (

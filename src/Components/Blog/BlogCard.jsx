@@ -19,7 +19,7 @@ const BlogCard = ({blog}) => {
          .then(data => {
             if(data.data.insertedId){
                 Swal.fire("Blog Added Successfully!");
-                    e.target.reset();
+                    
             }
                 
          })

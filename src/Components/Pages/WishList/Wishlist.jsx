@@ -17,6 +17,9 @@ const Wishlist = () => {
         })
 
     }, [])
+    const handleDeleteItem = _id => {
+        setWishes(prevItems => prevItems.filter(item => item._id !== _id));
+    };
     return (
         <div>
             <div className="text-center my-10">
@@ -24,7 +27,7 @@ const Wishlist = () => {
     </div>
         <div className="grid  lg:grid-cols-3 md:grid-cols-2">
            {
-            wishes?.map(wish => <WishCard key={wish.wishId} wish={wish}></WishCard>)
+            wishes?.map(wish => <WishCard key={wish.wishId} wish={wish} onDelete={handleDeleteItem}></WishCard>)
            }
         </div>
         </div>
