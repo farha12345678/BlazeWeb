@@ -18,10 +18,15 @@ const Wishlist = () => {
 
     }, [])
     return (
+        <div>
+            <div className="text-center my-10">
+        <h1 className="font-extrabold text-5xl ">Wishlisted Item</h1>
+    </div>
         <div className="grid  lg:grid-cols-3 md:grid-cols-2">
            {
             wishes?.map(wish => <WishCard key={wish.wishId} wish={wish}></WishCard>)
            }
+        </div>
         </div>
     );
 };
