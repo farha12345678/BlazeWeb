@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import Swal from "sweetalert2";
 
 const WishCard = ({ wish , onDelete }) => {
-    const { title, image, short_description, category , _id } = wish
+    const { title, image, short_description, category ,wishId,  _id } = wish
     console.log(wish);
 
 
@@ -31,7 +31,7 @@ const WishCard = ({ wish , onDelete }) => {
 
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Your blog has been removed.",
                             icon: "success"
 
                         });
@@ -55,7 +55,7 @@ const WishCard = ({ wish , onDelete }) => {
                     <p className='text-lg font-medium text-blue-500'>{short_description}</p>
                     <p className='text-lg font-medium'>Category: <span>{category}</span></p>
                     <div className="card-actions justify-end">
-                        <Link to={`/view/${_id}`} className="badge badge-outline">Details</Link>
+                        <Link to={`/view/${wishId}`} className="badge badge-outline">Details</Link>
                         {/* <Link onClick={wish.handleWish}  className="badge badge-outline">Wishlist</Link> */}
                         <button onClick={() => handleDelete(_id)}  className="badge badge-outline">Remove from Wishlist</button>
                     </div>

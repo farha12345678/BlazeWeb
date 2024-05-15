@@ -10,13 +10,14 @@ const AddBlog = () => {
         e.preventDefault();
         const form = e.target
         const email = form.email.value;
+        const date = form.date.value;
         const title = form.title.value;
         const image = form.image.value;
         const short_description = form.short_description.value;
         const long_description = form.long_description.value;
         const category = form.category.value;
-        const addBlog = {email,title,category,image, short_description,long_description}
-        console.log(email,title,category , image,short_description,long_description);
+        const addBlog = {email,title,category,image, short_description, date,long_description}
+        console.log(email,title,category ,date, image,short_description,long_description);
          // send data to the server
 
          axios.post('http://localhost:5000/blog' , addBlog)
@@ -44,6 +45,12 @@ const AddBlog = () => {
                                 <span className="label-text text-xl font-bold">Your Email</span>
                             </label>
                             <input type="text" name="email" defaultValue={user.email} disabled className="input input-bordered" required />
+                        </div>
+                    <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-xl font-bold">Date</span>
+                            </label>
+                            <input type="date" name="date" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">

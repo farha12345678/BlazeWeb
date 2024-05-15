@@ -2,7 +2,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import { AuthContext } from "../../Providers/AuthProvider";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -17,7 +17,7 @@ const {_id , title , image, email, short_description , long_description ,categor
 
     const { user } = useContext(AuthContext)
     
-
+console.log(blogLoad);
     // console.log(blogLoad);
 
     const handleComment = e => {

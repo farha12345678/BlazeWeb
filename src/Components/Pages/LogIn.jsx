@@ -45,10 +45,7 @@ const LogIn = () => {
                     })
                 if (loggedInUser) {
                     navigate(form)
-                    // axios.post('http://localhost:5000/jwt', user , {withCredentials:true})
-                    // .then(res => {
-                    //     console.log(res.data);
-                    // })
+                    
                 }
 
                 e.target.reset()

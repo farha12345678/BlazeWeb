@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../../Providers/AuthProvider";
 import WishCard from "./WishCard";
+import { Typewriter } from "react-simple-typewriter";
 
 const Wishlist = () => {
     
@@ -16,18 +17,16 @@ const Wishlist = () => {
             console.log(data);
         })
 
-    }, [])
+    }, [user?.email])
     const handleDeleteItem = _id => {
         setWishes(prevItems => prevItems.filter(item => item._id !== _id));
     };
     return (
         <div>
-            <div className="text-center my-10">
-        <h1 className="font-extrabold text-5xl ">Wishlisted Item</h1>
-    </div>
+             <h1 className="text-center my-10 font-bold text-4xl text-purple-800"><Typewriter words={["Wishlisted Item"]} loop={1000} cursor cursorStyle="_" typeSpeed={80}  delaySpeed={1000}/></h1>
         <div className="grid  lg:grid-cols-3 md:grid-cols-2">
            {
-            wishes?.map(wish => <WishCard key={wish.wishId} wish={wish} onDelete={handleDeleteItem}></WishCard>)
+            wishes?.map(wish => <WishCard key={wish._id} wish={wish} onDelete={handleDeleteItem}></WishCard>)
            }
         </div>
         </div>
