@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import FeaturedCard from "./FeaturedCard";
 
 const FeaturedPart = () => {
     const { isPending, isError, error, data: blog } = useQuery({
