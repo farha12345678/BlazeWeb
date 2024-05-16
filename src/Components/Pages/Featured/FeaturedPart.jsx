@@ -33,36 +33,51 @@ const FeaturedPart = () => {
     console.log(top10Blogs)
     return (
         <div>
-            <div className="text-center my-10">
-                <h1 className="font-bold text-5xl text-purple-600">Featured Blogs</h1>
-            </div>
+
+
             <div className="overflow-x-auto">
                 <table className="table">
-                {/* <thead>
+                    {/* head */}
+                    <thead className="text-center">
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                        </tr>
-                      
-                    </thead> */}
-                   
-                   
-                    
-                       
-                    {
-                top10Blogs.map(blog => <FeaturedCard key={blog._id} blog={blog}></FeaturedCard>)
-            }
-           </table>
-                        
-                 
-            </div>
 
-       
-            </div >
-            
-       
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Blog Owner</th>
+                            <th>Owner Name</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody className="text-center">
+                        {
+                            top10Blogs.map((blog, idx) => (
+                                <tr key={blog._id}>
+                                    <th>{idx+1}</th>
+                                    <td>{blog.title}</td>
+                                    <td>{blog.category}</td>
+                                    
+                                    <td>{blog.ownerName}</td>
+                                    <td className="flex justify-center"><img className='w-10 h-10 rounded-full' src={blog.owner} alt="" /></td>
+                                </tr>
+                            ))
+                        }
+                        {/* <tr>
+                            <th>1</th>
+                            <td>{title}</td>
+                            <td>{category}</td>
+                            <td><img className='w-10 h-10 rounded-full' src={owner} alt="" /></td>
+                            <td>{ownerName}</td>
+                        </tr> */}
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div >
+
+
     );
 };
 
