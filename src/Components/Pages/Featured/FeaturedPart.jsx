@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Typewriter } from "react-simple-typewriter";
 
 const FeaturedPart = () => {
     const { isPending, isError, error, data: blog } = useQuery({
@@ -32,7 +33,7 @@ const FeaturedPart = () => {
     console.log(top10Blogs)
     return (
         <div>
-
+<h1 className="text-center my-10 font-bold text-4xl text-purple-800"><Typewriter words={["Featured Blogs"]} loop={1000} cursor cursorStyle="_" typeSpeed={80}  delaySpeed={1000}/></h1>
 
             <div className="overflow-x-auto">
                 <table className="table">
