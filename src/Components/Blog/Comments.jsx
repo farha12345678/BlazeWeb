@@ -13,7 +13,7 @@ const Comments = () => {
         const name = user?.displayName
         const addComment = { comment, image, name }
         console.log(addComment);
-        axios.post('http://localhost:5000/comment', addComment)
+        axios.post('https://assignment-11-client-zeta.vercel.app/comment', addComment)
             .then(data => {
                 if (data.data.insertedId) {
                     setComments(data.data)

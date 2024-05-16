@@ -10,7 +10,7 @@ const Wishlist = () => {
     const { user } = useContext(AuthContext) || {}
     const [wishes , setWishes] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/wish/${user?.email}`)
+        fetch(`https://assignment-11-client-zeta.vercel.app/wish/${user?.email}`)
         .then(res=> res.json())
         .then(data=> {
             setWishes(data)

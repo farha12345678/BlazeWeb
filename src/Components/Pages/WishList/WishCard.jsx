@@ -20,7 +20,7 @@ const WishCard = ({ wish , onDelete }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/wish/${_id}`, {
+                fetch(`https://assignment-11-client-zeta.vercel.app/wish/${_id}`, {
                     method: 'DELETE',
                 })
                 .then(res => res.json())

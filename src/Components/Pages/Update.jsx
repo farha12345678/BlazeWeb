@@ -10,7 +10,7 @@ const Update = () => {
     // const { isError, error, data: update } = useQuery({
     //     queryKey: ['update'],
     //     queryFn: async () => {
-    //         const res = await fetch((params) => `http://localhost:5000//blog/${params.id}`)
+    //         const res = await fetch((params) => `https://assignment-11-client-zeta.vercel.app//blog/${params.id}`)
     //         console.log(update);
     //         return res.json()
 
@@ -34,7 +34,7 @@ const Update = () => {
         const addUpdate = { title, category, image, short_description, long_description }
         console.log(title, category, image, short_description, long_description);
         // send data to the server
-        fetch(`http://localhost:5000/blog/${_id}`, {
+        fetch(`https://assignment-11-client-zeta.vercel.app/blog/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

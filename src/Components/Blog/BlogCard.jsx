@@ -15,7 +15,7 @@ const BlogCard = ({blog}) => {
         const email = user?.email
        const wishedBlog = {wishId,title,image,short_description,email,category}
 
-       axios.post('http://localhost:5000/blog' , wishedBlog)
+       axios.post('https://assignment-11-client-zeta.vercel.app/blog' , wishedBlog)
          .then(data => {
             if(data.data.insertedId){
                 Swal.fire("Blog Added Successfully!");

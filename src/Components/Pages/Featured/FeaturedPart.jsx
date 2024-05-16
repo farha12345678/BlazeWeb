@@ -5,7 +5,7 @@ const FeaturedPart = () => {
     const { isPending, isError, error, data: blog } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/blog')
+            const res = await fetch('https://assignment-11-client-zeta.vercel.app/blog')
             console.log(blog);
             return res.json()
 
@@ -59,7 +59,7 @@ const FeaturedPart = () => {
                                     <td>{blog.category}</td>
                                     
                                     <td>{blog.ownerName}</td>
-                                    <td className="flex justify-center"><img className='w-10 h-10 rounded-full' src={blog.owner} alt="" /></td>
+                                    <td className="lg:flex justify-center"><img className='w-10 h-10 rounded-full' src={blog.owner} alt="" /></td>
                                 </tr>
                             ))
                         }

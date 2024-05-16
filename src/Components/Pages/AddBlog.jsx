@@ -10,17 +10,19 @@ const AddBlog = () => {
         e.preventDefault();
         const form = e.target
         const email = form.email.value;
+        const ownerName = form.ownerName.value;
+        const owner = form.owner.value;
         const date = form.date.value;
         const title = form.title.value;
         const image = form.image.value;
         const short_description = form.short_description.value;
         const long_description = form.long_description.value;
         const category = form.category.value;
-        const addBlog = {email,title,category,image, short_description, date,long_description}
+        const addBlog = {ownerName, owner,email,title,category,image, short_description, date,long_description}
         console.log(email,title,category ,date, image,short_description,long_description);
          // send data to the server
 
-         axios.post('http://localhost:5000//blog' , addBlog)
+         axios.post('https://assignment-11-client-zeta.vercel.app/blog' , addBlog)
          .then(data => {
             if(data.data.insertedId){
                 Swal.fire("Blog Added Successfully!");
@@ -45,6 +47,18 @@ const AddBlog = () => {
                                 <span className="label-text text-xl font-bold">Your Email</span>
                             </label>
                             <input type="text" name="email" defaultValue={user.email} disabled className="input input-bordered" required />
+                        </div>
+                    <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-xl font-bold">Your Name</span>
+                            </label>
+                            <input type="text" name="ownerName"className="input input-bordered" required />
+                        </div>
+                    <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-xl font-bold">Your Photo</span>
+                            </label>
+                            <input type="text" name="owner" defaultValue={user.photoURL} disabled className="input input-bordered" required />
                         </div>
                     <div className="form-control">
                             <label className="label">

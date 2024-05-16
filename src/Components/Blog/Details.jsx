@@ -29,10 +29,10 @@ console.log(blogLoad);
         const name = user?.displayName
         const addComment = { comment, image, name, commentId }
         console.log(addComment);
-        axios.post('http://localhost:5000/comment', addComment)
+        axios.post('https://assignment-11-client-zeta.vercel.app/comment', addComment)
             .then(data => {
                 if (data.data.insertedId) {
-                    Swal.fire("Blog Added Successfully!");
+                    Swal.fire("Commented Successfully!");
                     
                     console.log(data.data);
                     
@@ -45,7 +45,7 @@ console.log(blogLoad);
     const { isError, error, data: comments } = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/comments?commentId=${_id}`)
+            const res = await fetch(`https://assignment-11-client-zeta.vercel.app/comments?commentId=${_id}`)
             console.log(comments);
 
             return res.json()
@@ -60,7 +60,7 @@ console.log(blogLoad);
 
     return (
         <div>
-            <div className=" w-[900px] mx-auto h-auto bg-purple-100 border border-purple-600 my-20">
+            <div className=" lg:w-[900px] md:w-[500px] lg:mx-auto h-auto bg-purple-100 border border-purple-600 my-5 md:my-10 lg:my-20">
                 <figure><img className='h-96 w-full' src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-xl font-bold">
@@ -98,7 +98,7 @@ console.log(blogLoad);
                                     <div>
                                         <form  onSubmit={handleComment}>
                                             <div className="h-12">
-                                            <input className="lg:w-[400px] " type="text" name="comment" />
+                                            <input className="lg:w-[400px] " type="text" name="comment" placeholder="Comment here..." />
                                             <button className=" bg-blue-500 text-white font-medium text-xl rounded-sm">Comment</button>
                                             </div>
                                         </form>

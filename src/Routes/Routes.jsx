@@ -16,12 +16,12 @@ const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
-      //  errorElement: <ErrorPage></ErrorPage>,
+       errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
           element: <Home></Home>,
-          // loader:fetch('http://localhost:5000//blog')
+          // loader:fetch('https://assignment-11-client-zeta.vercel.app//blog')
           
         },
         {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         {
           path: '/update/:id',
           element: <PrivateRoutes><Update></Update></PrivateRoutes>,
-          loader:({params}) => fetch(`http://localhost:5000/blog/${params.id}`)
+          loader:({params}) => fetch(`https://assignment-11-client-zeta.vercel.app/blog/${params.id}`)
         },
         {
           path:'/add',
@@ -50,8 +50,8 @@ const router = createBrowserRouter([
         },
         {
           path:'/view/:id',
-          element:<Details></Details>,
-          loader:({params}) => fetch(`http://localhost:5000/blog/${params.id}`)
+          element:<PrivateRoutes><Details></Details></PrivateRoutes>,
+          loader:({params}) => fetch(`https://assignment-11-client-zeta.vercel.app/blog/${params.id}`)
         },
         {
           path:'/wishlist',
@@ -60,8 +60,8 @@ const router = createBrowserRouter([
         },
         {
           path:"/featured",
-          element:<FeaturedPart></FeaturedPart>,
-          loader: () => fetch('http://localhost:5000/blog')
+          element:<PrivateRoutes><FeaturedPart></FeaturedPart></PrivateRoutes>,
+          loader: () => fetch('https://assignment-11-client-zeta.vercel.app/blog')
         }
       ]
     },

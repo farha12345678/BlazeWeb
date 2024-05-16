@@ -15,7 +15,7 @@ const AllBlogs = () => {
     const { isError, error, data: blogs } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/blog')
+            const res = await fetch('https://assignment-11-client-zeta.vercel.app/blog')
             console.log(blogs);
             return res.json()
 

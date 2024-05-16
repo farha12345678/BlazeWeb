@@ -16,10 +16,10 @@ const Card = ({blog}) => {
         const email = user?.email
        const wishedBlog = {wishId,title,image,short_description,email,category}
 
-       axios.post('http://localhost:5000/wish' , wishedBlog)
+       axios.post('https://assignment-11-client-zeta.vercel.app/wish' , wishedBlog)
          .then(data => {
             if(data.data.insertedId){
-                Swal.fire("Blog Added Successfully!");
+                Swal.fire("Blog Added to wishlist Successfully!");
                     console.log(data.data);
             }
                 
@@ -28,7 +28,7 @@ const Card = ({blog}) => {
     }
     return (
         <div>
-             <div className=" w-96 lg:mx-10 h-[550px] bg-purple-100 border border-purple-600">
+             <div className=" lg:w-96 lg:mx-10 h-[550px] bg-purple-100 border border-purple-600">
                 <figure><img className='h-56 w-full' src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-xl font-bold">
