@@ -5,15 +5,15 @@ import Swal from "sweetalert2";
 
 const Update = () => {
     const updates = useLoaderData()
-    const {_id,title ,image ,short_description ,long_description ,category} = updates;
+    const { _id, title, image, short_description, long_description, category } = updates;
 
     // const { isError, error, data: update } = useQuery({
     //     queryKey: ['update'],
     //     queryFn: async () => {
-    //         const res = await fetch((params) => `http://localhost:5000/blog/${params.id}`)
+    //         const res = await fetch((params) => `http://localhost:5000//blog/${params.id}`)
     //         console.log(update);
     //         return res.json()
-        
+
     //     }
     // })
 
@@ -44,7 +44,7 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount> 0) {
+                if (data.modifiedCount > 0) {
                     Swal.fire("Blog Added Successfully!");
                     e.target.reset()
                 }
@@ -53,7 +53,7 @@ const Update = () => {
     }
     return (
         <div>
-            
+
             <div className="hero   mx-auto rounded-2xl" style={{ backgroundImage: 'url(https://i.ibb.co/xj113kc/andrew-neel-cckf4-Ts-HAuw-unsplash.jpg)' }}>
 
 
@@ -64,7 +64,7 @@ const Update = () => {
                     <form onSubmit={handleUpdate} className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                
+
                                 <span className="label-text text-xl font-bold">Title</span>
                             </label>
                             <input type="text" name="title" defaultValue={title} className="input input-bordered" required />

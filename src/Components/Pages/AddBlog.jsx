@@ -20,7 +20,7 @@ const AddBlog = () => {
         console.log(email,title,category ,date, image,short_description,long_description);
          // send data to the server
 
-         axios.post('http://localhost:5000/blog' , addBlog)
+         axios.post('http://localhost:5000//blog' , addBlog)
          .then(data => {
             if(data.data.insertedId){
                 Swal.fire("Blog Added Successfully!");

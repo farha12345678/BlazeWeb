@@ -17,6 +17,7 @@
     "ka-table": "^9.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "mui-datatables": "^4.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-data-table-component": "^7.6.2",

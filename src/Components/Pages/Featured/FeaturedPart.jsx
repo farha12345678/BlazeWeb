@@ -6,20 +6,20 @@ const FeaturedPart = () => {
         queryKey: ['blog'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/blog')
-             console.log(blog);
+            console.log(blog);
             return res.json()
-        
+
         }
     })
-    if(isPending){
+    if (isPending) {
         return <div className="text-center"><span className="loading loading-bars loading-lg text-center"></span></div>
     }
 
-    if(isError){
+    if (isError) {
         return <p>{error.message}</p>
     }
 
-    
+
     const blogArray = Object.keys(blog).map(key => blog[key]);
     console.log(blogArray);
 
@@ -33,12 +33,36 @@ const FeaturedPart = () => {
     console.log(top10Blogs)
     return (
         <div>
-            <div>
-                {
-                    top10Blogs.map(blog => <FeaturedCard key={blog._id} blog={blog}></FeaturedCard>)
-                }
+            <div className="text-center my-10">
+                <h1 className="font-bold text-5xl text-purple-600">Featured Blogs</h1>
             </div>
-        </div>
+            <div className="overflow-x-auto">
+                <table className="table">
+                {/* <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
+                        </tr>
+                      
+                    </thead> */}
+                   
+                   
+                    
+                       
+                    {
+                top10Blogs.map(blog => <FeaturedCard key={blog._id} blog={blog}></FeaturedCard>)
+            }
+           </table>
+                        
+                 
+            </div>
+
+       
+            </div >
+            
+       
     );
 };
 
