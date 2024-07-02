@@ -26,3 +26,35 @@ License:
 
 Specify the license under which the blogging site is distributed.
 Include any terms and conditions for use, modification, and distribution.
+
+# Features :
+- Allow users to register accounts and create profiles.
+- Enables personalized experiences and interactions with content.
+- Provide a user-friendly editor for writing and formatting blog posts.
+- Facilitates easy creation and publication of content by authors.
+- Enable readers to comment on blog posts and engage in discussions.
+- Fosters community interaction and feedback, enhancing user engagement.
+- Organize blog posts into categories and tag them for easy navigation.
+- Helps users discover relevant content and improves site navigation.
+
+# Technology used :
+- React JS
+- MongoDB
+- Javascript
+- Tailwind CSS
+- Daisy UI
+- Swiper Slider
+- Sweet Alert etc.
+
+# Installation Steps
+- 1.Clone the repository:
+git clone https://github.com/farha12345678/TrackIt.git
+
+- 2.Navigate to the project directory:
+cd folder-name
+
+- 3.Install dependencies:
+npm install
+
+# Visit Server Side :
+- https://github.com/farha12345678/BlazeWeb-server
